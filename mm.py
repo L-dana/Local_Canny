@@ -39,9 +39,20 @@ def rmbg_fn(img):
     def on_trackbar(x):
         pass
 
+    h, w, c = img.shape
+    print(h , w, c)
+
+    if (h >= 900) or (w >= 1600):
+        h = int(h/2)
+        w = int(h/2)
+
+    elif (h <= 200) or (w <= 200):
+        h = h*2
+        w = w*2
+
     #namedWindow 함수를 사용하여 트랙바를 붙인 윈도우를 생성해야 합니다.
     cv.namedWindow('Canny', cv.WINDOW_NORMAL)
-    cv.resizeWindow("Canny", 854, 480)
+    cv.resizeWindow("Canny", h, w)
 
     #트랙바를 생성한다.
     #트랙바 이름, 윈도우 이름, 트랙바의 최소값, 트랙바의 최댓값, 콜백함수를 입력
